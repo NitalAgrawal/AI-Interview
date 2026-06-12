@@ -53,7 +53,7 @@ async function registerUserController(req,res) {
        })
 }
 
-/*
+/** 
 * @name loginusercontroller
 * @description login a  user,expects  email and password in the request body 
  * @access Public
@@ -96,6 +96,11 @@ async function loginUserController(req,res) {
        })
 }
 
+/** 
+* @name logoutusercontroller
+* @description clear token from user cookie and add the token i blacklist  
+ * @access Public
+*/
 async function logoutUserController(req,res){
    const token = req.cookies.token
 
@@ -107,8 +112,31 @@ async function logoutUserController(req,res){
       message:"user loged out successfully"
    })
 }
+
+/** 
+* @name getMeController
+* @description get the current logged in user details 
+ * @access private
+*/
+async function getMeController(req,res) {
+   
+   const user = await userModel.findById(req.user.id)
+
+   res.status(200).json({
+      message:"user details fetched successfully ",
+      user:{
+         id: user._id,
+         username: user.username,
+         email: user.email
+      }
+   })
+
+} // req.user.id middleware se jha decoded ho rhi hai 
+
+
 module.exports={
     registerUserController,
     loginUserController,
-    logoutUserController
+    logoutUserController,
+    getMeController
 }
