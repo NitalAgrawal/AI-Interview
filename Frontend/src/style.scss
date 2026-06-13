@@ -1,3 +1,5 @@
+@use "./style/button.scss";
+
 * {
     margin: 0%;
     padding: 0%;
@@ -10,5 +12,7 @@ body,
 #root{
    
     width: 100%;
-    background-color: aquamarine;
+    background-color: rgb(37, 37, 37);
+    color:rgb(235, 233, 231);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
