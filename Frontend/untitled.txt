@@ -1,0 +1,17 @@
+4 layer architecture 
+
+1.UI(what user sees + navigation handle )
+=>component
+=>pages
+
+4.Hook (manage both state and api layer )
+=> hooks
+
+3.State (frontend pr user ka data store , used to manage the state of the data )
+    (user ki state or jo load hone ki state hai in dono ko manage krne k liye state ka use  )
+=> auth.context,jsx
+=> ai.context.jsx
+
+2.Api(how the frontend communicates with the backend )
+=> Services
+    => auth.api.js
