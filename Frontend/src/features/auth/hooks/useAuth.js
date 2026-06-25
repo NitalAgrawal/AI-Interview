@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect} from "react";
 // Context ke andar stored data ko access karna.
 
 import { AuthContext } from "../auth.context";
@@ -49,5 +49,18 @@ export const useAuth = () => {
          
     }
 
+     useEffect(()=>{
+          
+        const getAndSetUser = async()=>{
+
+            const data = await getMe()
+            setUser(data.user)
+            setLoading(false)
+        }
+
+      getAndSetUser()
+    },[])
+
     return{ user, loading, handleRegister, handleLogin, handleLogout }
 }
+
