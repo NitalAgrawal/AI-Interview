@@ -20,7 +20,7 @@ const interviewReportSchema = z.object({
     skillGaps: z.array(z.object({
         skill: z.string().description("the skill which the candidate is lacking"),
         severity: z.enum([ "low", "medium", "high"]).description("the severity of this skill gap, i.e. how important  it is for the candidate to improve this skill")
-    }))
+    })).description("list of skill gaps in the candidates profile along with their severity ")
 })
 
 async function generateInterviewReport({ resume, selfDescription, jobDescription }){
