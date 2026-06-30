@@ -1,18 +1,32 @@
 const pdfParse = require("pdf-parse")
 const generateInterViewReport = require("../services/ai.service")
+const interviewReportModel = require("../models/interviewReport.model")
 
 async function generateInterViewReportController(req, res){
-    const resumefile = req.file
+    
 
-    const resumeContent = pdfParse(req.file.buffer)
+    const resumeContent = await (new pdfParse.PDFParse(UNIT(req.file.buffer))).getText()
     const { selfDescription, jobDescription} = req.body
 
     const interViewReportByAi = await generateInterViewReport({
-        resume: resumeContent,
+        resume: resumeContent.text,
         selfDescription,
         jobDescription
     })
-}
 
+    const interviewReport = await interviewReportModel.create({
+        user: req.user.id,
+        resume: resumeContent.text,
+        selfDescription,
+        jobDescription,
+        ...interViewReportByAi
+    })
+
+    res.status(201).json({
+        message:"Interview report generated success",
+        interviewReport
+    })
+}
+                                               
 
 module.exports = { generateInterViewReportController }
