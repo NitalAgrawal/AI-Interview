@@ -1,9 +1,9 @@
 // like user can go to the home page only if it is  loggedin  if it is not then first it will redirected to the login page 
 import { useAuth } from "../hooks/useAuth";
-import { Navigate } from "react-router";
+import { Navigate } from "react-router-dom";
 import React from 'react'
 
-const protected = ( {children} ) => {
+const Protected = ( {children} ) => {
 
     const { loading,user } = useAuth()
     
@@ -18,4 +18,4 @@ const protected = ( {children} ) => {
   return children
 }
 
-export default protected 
+export default Protected 
