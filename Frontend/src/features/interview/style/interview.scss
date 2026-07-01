@@ -1,0 +1,458 @@
+$bg-color: #121418;
+$card-bg: #15181e;
+$sidebar-bg: #15181e;
+$card-inner-bg: #1c202a;
+$input-bg: #22262f;
+$border-color: #2c323f;
+$text-primary: #f8f9fa;
+$text-secondary: #9ca3af;
+$accent-red: #ff4757;
+$badge-purple: #8b5cf6;
+$badge-green: #10b981;
+$font-stack: 'Inter', system-ui, -apple-system, sans-serif;
+
+.interview-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: $bg-color;
+  font-family: $font-stack;
+  color: $text-primary;
+
+  .interview-layout {
+    width: 100%;
+    max-width: 1400px;
+    height: 90vh;
+    background-color: $card-bg;
+    border: 1px solid $border-color;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    
+    display: flex;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      height: auto;
+      min-height: 100vh;
+    }
+  }
+
+  .sidebar {
+    width: 280px;
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: $sidebar-bg;
+    
+    @media (max-width: 1024px) {
+      width: 100%;
+      border-right: none !important;
+      border-left: none !important;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+
+  .left-sidebar {
+    border-right: 1px solid $border-color;
+
+    .sidebar-header {
+      margin-bottom: 1.5rem;
+      padding-left: 1rem;
+      
+      .section-title {
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: $text-secondary;
+      }
+    }
+
+    .nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .nav-item {
+      background-color: transparent;
+      border: none;
+      color: $text-secondary;
+      padding: 0.875rem 1rem;
+      border-radius: 0.5rem;
+      text-align: left;
+      font-family: $font-stack;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      .icon {
+        color: inherit;
+        font-size: 1rem;
+      }
+
+      &:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: $text-primary;
+      }
+
+      &.active {
+        color: $accent-red;
+        background-color: rgba(255, 71, 87, 0.1);
+        
+        .icon {
+          color: $accent-red;
+        }
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 3rem;
+    overflow-y: auto;
+    background-color: $card-bg;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: $border-color;
+      border-radius: 4px;
+    }
+
+    .content-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      h2 {
+        margin: 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      .question-count {
+        background-color: $input-bg;
+        color: $text-secondary;
+        padding: 0.25rem 0.75rem;
+        border-radius: 1rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+    }
+
+    .questions-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .question-card {
+      background-color: $card-inner-bg;
+      border: 1px solid $border-color;
+      border-radius: 0.75rem;
+      overflow: hidden;
+
+      .question-header {
+        padding: 1.25rem 1.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.02);
+        }
+      }
+
+      .question-title-wrapper {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .q-number {
+        background-color: rgba(255, 71, 87, 0.2);
+        color: $accent-red;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+        margin-top: 0.1rem;
+      }
+
+      .question-text {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: $text-primary;
+        line-height: 1.4;
+      }
+
+      .expand-btn {
+        background: none;
+        border: none;
+        color: $text-secondary;
+        font-size: 1.2rem;
+        cursor: pointer;
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .question-body {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        border-top: 1px solid transparent;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+
+        .badge {
+          display: inline-block;
+          font-size: 0.7rem;
+          font-weight: 700;
+          padding: 0.2rem 0.5rem;
+          border-radius: 0.25rem;
+          margin-bottom: 0.5rem;
+        }
+
+        .intention-badge {
+          background-color: rgba(139, 92, 246, 0.2);
+          color: $badge-purple;
+        }
+
+        .answer-badge {
+          background-color: rgba(16, 185, 129, 0.2);
+          color: $badge-green;
+        }
+
+        p {
+          margin: 0;
+          font-size: 0.9rem;
+          color: $text-secondary;
+          line-height: 1.6;
+        }
+      }
+    }
+
+    // ── Road Map Styles ──
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+
+      .full-width {
+        grid-column: 1 / -1;
+      }
+    }
+
+    .roadmap-section {
+      background-color: $card-inner-bg;
+      border: 1px solid $border-color;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+    }
+
+    .roadmap-section-title {
+      margin: 0 0 1rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+
+      .green-dot { background-color: #10b981; }
+      .red-dot   { background-color: #ef4444; }
+      .blue-dot  { background-color: #3b82f6; }
+    }
+
+    .roadmap-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .roadmap-item {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      padding: 0.75rem 1rem;
+      border-radius: 0.5rem;
+
+      &.strength-item {
+        background-color: rgba(16, 185, 129, 0.08);
+        border-left: 3px solid #10b981;
+        color: #d1fae5;
+      }
+
+      &.weakness-item {
+        background-color: rgba(239, 68, 68, 0.08);
+        border-left: 3px solid #ef4444;
+        color: #fee2e2;
+      }
+
+      &.recommendation-item {
+        background-color: rgba(59, 130, 246, 0.08);
+        border-left: 3px solid #3b82f6;
+        color: #dbeafe;
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+
+        .rec-number {
+          background-color: rgba(59, 130, 246, 0.2);
+          color: #93c5fd;
+          font-size: 0.75rem;
+          font-weight: 700;
+          width: 22px;
+          height: 22px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          margin-top: 1px;
+        }
+      }
+    }
+  }
+
+  .right-sidebar {
+    border-left: 1px solid $border-color;
+
+    .sidebar-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: $text-secondary;
+      margin: 0 0 1rem 0;
+      text-transform: uppercase;
+    }
+
+    .score-section {
+      margin-bottom: 3rem;
+      text-align: center;
+      border-bottom: 1px solid $border-color;
+      padding-bottom: 2rem;
+
+      .sidebar-title {
+        text-align: left;
+      }
+
+      .score-circle {
+        width: 120px;
+        height: 120px;
+        margin: 1rem auto;
+        
+        .circular-chart {
+          display: block;
+          margin: 0 auto;
+          max-width: 100%;
+          max-height: 250px;
+        }
+
+        .circle-bg {
+          fill: none;
+          stroke: #2c323f;
+          stroke-width: 3;
+        }
+
+        .circle {
+          fill: none;
+          stroke-width: 3;
+          stroke-linecap: round;
+        }
+
+        .green .circle {
+          stroke: #10b981;
+          animation: progress 1s ease-out forwards;
+        }
+
+        .percentage {
+          fill: #fff;
+          font-family: $font-stack;
+          font-size: 0.5rem;
+          font-weight: 600;
+          text-anchor: middle;
+        }
+
+        .percent-sign {
+          fill: #fff;
+          font-family: $font-stack;
+          font-size: 0.3rem;
+          font-weight: 600;
+        }
+
+        @keyframes progress {
+          0% {
+            stroke-dasharray: 0 100;
+          }
+        }
+      }
+
+      .score-text {
+        color: #10b981;
+        font-size: 0.9rem;
+        font-weight: 500;
+        margin: 0;
+      }
+    }
+
+    .skills-section {
+      .tags-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+
+        .skill-tag {
+          font-size: 0.85rem;
+          font-weight: 500;
+          padding: 0.6rem 1rem;
+          border-radius: 0.25rem;
+          line-height: 1.4;
+          
+          &.tag-level-0 {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+          }
+
+          &.tag-level-1 {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+          }
+
+          &.tag-level-2 {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #10b981;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
