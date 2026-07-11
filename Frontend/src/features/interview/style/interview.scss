@@ -6,7 +6,7 @@ $input-bg: #22262f;
 $border-color: #2c323f;
 $text-primary: #f8f9fa;
 $text-secondary: #9ca3af;
-$accent-red: #ff4757;
+$accent: #14b8a6;
 $badge-purple: #8b5cf6;
 $badge-green: #10b981;
 $font-stack: 'Inter', system-ui, -apple-system, sans-serif;
@@ -105,11 +105,11 @@ $font-stack: 'Inter', system-ui, -apple-system, sans-serif;
       }
 
       &.active {
-        color: $accent-red;
-        background-color: rgba(255, 71, 87, 0.1);
+        color: $accent;
+        background-color: rgba(20, 184, 166, 0.1);
         
         .icon {
-          color: $accent-red;
+          color: $accent;
         }
       }
     }
@@ -185,8 +185,8 @@ $font-stack: 'Inter', system-ui, -apple-system, sans-serif;
       }
 
       .q-number {
-        background-color: rgba(255, 71, 87, 0.2);
-        color: $accent-red;
+        background-color: rgba(20, 184, 166, 0.2);
+        color: $accent;
         font-size: 0.75rem;
         font-weight: 700;
         padding: 0.25rem 0.5rem;
