@@ -60,7 +60,7 @@ async function generateInterViewReportByIdController(req, res) {
 async function getAllInterviewReportsController(req, res) {
     const { id } = req.user
 
-    const interviewReports = await (await interviewReportModel.find({ user: req.user.id })).toSorted({ createdAt: -1 }).select("-resume -selfDescription -jobDescription -__v -technicalQuestions -behavioralQuestions -skillGaps -preparationPlan")
+    const interviewReports = await interviewReportModel.find({ user: req.user.id }).sort({ createdAt: -1 }).select("-resume -selfDescription -jobDescription -__v -technicalQuestions -behavioralQuestions -skillGaps -preparationPlan")
 
     if (!interviewReports) {
         return res.status(404).json({

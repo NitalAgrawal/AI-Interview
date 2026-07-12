@@ -28,7 +28,7 @@ export const useInterview = () => {
             setLoading(false)
         }
 
-        return response.interviewReport;
+        return response?.interviewReport;
      }
 
      const getReportById = async ({interviewId}) => {
@@ -43,7 +43,7 @@ export const useInterview = () => {
         }finally {
             setLoading(false)
         }
-        return response.interviewReport;
+        return response?.interviewReport;
      }
 
      const getReports = async () => {
@@ -58,7 +58,7 @@ export const useInterview = () => {
         }finally {
             setLoading(false)
         }
-        return response.interviewReport;
+        return response?.interviewReports;
      }
 
      const getResumePdf = async (interviewReportId) => {
@@ -69,8 +69,8 @@ export const useInterview = () => {
           
 const url = window.URL.createObjectURL(new Blob( [response], { type: "application/pdf" }))
 const link = document.createElement("a")
-Link.href = url
-link.setAttribute("download", `resume_S(interviewReportId}.pdf`)
+link.href = url
+link.setAttribute("download", `resume_${interviewReportId}.pdf`)
 document.body.appendChild(link)
 link.click()
         } catch(error){
@@ -78,7 +78,7 @@ link.click()
         }finally {
             setLoading(false)
         }
-        return response.interviewReport;
+        return response;
      }
 
      useEffect(() => {
